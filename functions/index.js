@@ -131,6 +131,24 @@ app.post("/signup", (req, res) => {
       }
       
     });
-}) 
+});
+
+// Login
+app.post("/login", (req, res) => {
+  const user = {
+    email: req.body.email,
+    password: req.body.password
+  }
+
+  let errors = {}
+
+  if(isEmpty(user.email)) errors.email = "Must not be empty";
+  if(isEmpty(user.password)) errors.password = "Must not be empty";
+
+  if (Object.keys(errors).length > 0) return res.status(400).json(errors);
+
+  firebase.auth().signInWithEmailAndPassword(user.email, user.p)
+})
+
 
 exports.api = functions.region("europe-west1").https.onRequest(app);
