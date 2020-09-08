@@ -25,6 +25,7 @@ let db = {
 };
 
 const userDetails = {
+  // Redux data
   credentials: {
     bio: "Hello world!",
     createdAt: "2020-09-06T16:42:27.836Z",
