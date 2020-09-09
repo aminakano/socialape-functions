@@ -42,7 +42,8 @@ exports.postOneScream = (req, res) => {
 
 exports.getScream = (req, res) => {
   let screamData = {}
-  db.doc(`/screams/${req.params.screamId}`).get()
+  db.doc(`/screams/${req.params.screamId}`)
+    .get()
     .then(doc => {
       if (!doc.exists) {
         return res.status(404).json({ error: "scream not found"});
