@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const app = require("express")();
 const FBAuth = require("./util/fbAuth");
 
-const { getAllScreams, postOneScream, getScream } = require("./handlers/screams");
+const { getAllScreams, postOneScream, getScream, commentOnScream } = require("./handlers/screams");
 const {
   signup,
   login,
@@ -19,7 +19,7 @@ app.get("/scream/:screamId", getScream);
 //Todo like a scream
 //Todo unlike a scream
 //Todo comment on scream
-
+app.post("/scream/:screamId/comment", FBAuth, commentOnScream)
 
 // Users routes
 app.post("/signup", signup);
