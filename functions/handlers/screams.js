@@ -14,6 +14,7 @@ exports.getAllScreams = (req, res) => { //1st param is the name of route & 2nd p
           createdAt: doc.data().createdAt,
           commentCount: doc.data().commentCount,
           likeCount: doc.data().likeCount,
+          userImage: doc.data().userImage
         });
       });
       return res.json(screams);
@@ -77,7 +78,7 @@ exports.getScream = (req, res) => {
 
 // Comment on a comment
 exports.commentOnScream = (req, res) => {
-  if(req.body.body.trim() === "") return res.status(400).json({ error: "Must not be empty" });
+  if(req.body.body.trim() === "") return res.status(400).json({ comment: "Must not be empty" });
 
   const newComment = {
     body: req.body.body,
@@ -154,7 +155,7 @@ exports.likeScream = (req, res) => {
 }
 
 // Unlike a scream
-exports.unlikeScream = (req, res) => {
+exports.unlikeScrfeam = (req, res) => {
   const likeDocument = db
                         .collection("likes")
                         .where("userHandle", "==", req.user.handle)
