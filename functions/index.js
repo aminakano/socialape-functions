@@ -106,9 +106,9 @@ exports.onUserImageChange = functions
   .onUpdate(change => {
     console.log(change.before.data())
     console.log(change.after.data())
-    let batch = db.batch();
 
     if(change.before.data().imageUrl !== change.after.data().imageUrl) {
+      const batch = db.batch();
       console.log("image has changed");
       return db
         .collection("screams")
@@ -123,5 +123,33 @@ exports.onUserImageChange = functions
           });
           return batch.commit();
         });
-    }
-  })
+    } else return true;
+  });
+
+  exports.onScreamDelete = functions
+    .region("europe-west1")
+    .firestore.document("/screams/{screamId}")
+    .onDelete((snapshot, context) => {
+      const screamId = context.params.screamId;
+      const batch = db.batch();
+      return db.collection("comments").where("screamId", "==", screamId).get()
+        .then(data => {
+          data.forEach(doc => {
+            batch.delete(db.doc(`/comments/${doc.id}`));
+          })
+          return db.collection("likes").where("screamId", "==", screamId)
+        })
+        .then(data => {
+          data.forEach(doc => {
+            batch.delete(db.doc(`/likes/${doc.id}`));
+          })
+          return db.collection("notifications").where("screamId", "==", screamId)
+        })
+        .then(data => {
+          data.forEach(doc => {
+            batch.delete(db.doc(`/notifications/${doc.id}`));
+          })
+          return batch.commit();
+        })
+        .catch(err => console.error(err));
+    })

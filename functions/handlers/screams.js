@@ -155,7 +155,7 @@ exports.likeScream = (req, res) => {
 }
 
 // Unlike a scream
-exports.unlikeScrfeam = (req, res) => {
+exports.unlikeScream = (req, res) => {
   const likeDocument = db
                         .collection("likes")
                         .where("userHandle", "==", req.user.handle)
