@@ -22,6 +22,7 @@ export default {
     },
     image: {
       margin: "20px auto",
+      height: "100px"
     },
     pageTitle: {
       margin: "10px auto",
