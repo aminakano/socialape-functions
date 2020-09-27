@@ -52,26 +52,25 @@ export default {
       marginBottom: 20,
     },
     paper: {
-      padding: 20,
+      padding: "25px 20px 20px",
     },
     profile: {
-      "& .image-wrapper": {
-        textAlign: "center",
-        position: "relative",
-        "& button": {
-          position: "absolute",
-          top: "80%",
-          left: "70%",
-        },
-      },
       "& .profile-image": {
         width: 200,
         height: 200,
         objectFit: "cover",
         maxWidth: "100%",
-        borderRadius: "50%",
+        margin: "0 auto",
+        position: "relative",
         "& img": {
-          height: "100px",
+          height: "100%",
+          width: "100%",
+          borderRadius: "50%",
+        },
+        "& button": {
+          position: "absolute",
+          bottom: "0",
+          right: "0",
         },
       },
       "& .profile-details": {
@@ -80,7 +79,7 @@ export default {
           verticalAlign: "middle",
         },
         "& a": {
-          color: "#00bcd4",
+          color: "#d81b60",
         },
       },
       "& hr": {
