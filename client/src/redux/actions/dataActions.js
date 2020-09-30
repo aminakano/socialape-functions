@@ -1,6 +1,7 @@
 import { SET_SCREAMS, LOADING_DATA, LIKE_SCREAM, UNLIKE_SCREAM } from "../types";
 import axios from "axios";
 
+// Get all screams
 export const getScreams = () => dispatch => {
   dispatch({ type: LOADING_DATA });
   axios.get("/screams")
@@ -17,3 +18,27 @@ export const getScreams = () => dispatch => {
       })
     })
 }
+
+// Like a scream
+export const likeScream = screamId => dispatch => {
+  axios.get(`/screams/${screamId}/like`)
+    .then(res => {
+      dispatch({
+        type: LIKE_SCREAM,
+        payload: res.data,
+      });
+    })
+    .error(err => console.log(err))
+}
+// Unlike a scream
+export const unlikeScream = (screamId) => (dispatch) => {
+  axios
+    .get(`/screams/${screamId}/unlike`)
+    .then((res) => {
+      dispatch({
+        type: UNLIKE_SCREAM,
+        payload: res.data,
+      });
+    })
+    .error((err) => console.log(err));
+};
