@@ -26,9 +26,9 @@ export const likeScream = screamId => dispatch => {
       dispatch({
         type: LIKE_SCREAM,
         payload: res.data,
-      });
+      })
     })
-    .error(err => console.log(err))
+    .catch(err => console.log(err))
 }
 // Unlike a scream
 export const unlikeScream = (screamId) => (dispatch) => {
@@ -40,5 +40,5 @@ export const unlikeScream = (screamId) => (dispatch) => {
         payload: res.data,
       });
     })
-    .error((err) => console.log(err));
+    .catch((err) => console.log(err));
 };
