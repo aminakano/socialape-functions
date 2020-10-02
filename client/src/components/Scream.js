@@ -114,7 +114,7 @@ class Scream extends Component {
 
 Scream.propTypes = {
   likeScream: PropTypes.func.isRequired,
-  likeScream: PropTypes.func.isRequired,
+  unlikeScream: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   scream: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
