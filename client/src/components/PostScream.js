@@ -28,7 +28,6 @@ const styles = (theme) => ({
     position: "absolute",
     left: "90%",
     top: "10%"
-
   },
 });
 
