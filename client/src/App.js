@@ -34,7 +34,6 @@ if(token) {
     axios.defaults.headers.common["Authorization"] = token
     store.dispatch(getUserData())
   }
-  console.log(decodedToken)
 }
 
 class App extends Component {

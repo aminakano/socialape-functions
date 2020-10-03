@@ -53,7 +53,7 @@ export class DeleteScream extends Component {
           fullWidth
           maxWidth="sm"
         >
-          <DialogTitle>Are you sure you want to delete scream?</DialogTitle>
+          <DialogTitle>Are you sure you want to delete this scream?</DialogTitle>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel

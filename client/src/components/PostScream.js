@@ -97,6 +97,7 @@ class PostScream extends Component {
                 label="SCREAM!"
                 multiline
                 rows="3"
+                margin="normal"
                 placeholder="Scream at your social apes"
                 error={errors.body ? true : false}
                 helperText={errors.body}
