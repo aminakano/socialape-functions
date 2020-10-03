@@ -44,11 +44,9 @@ class Scream extends Component {
   }
   likeScream = () => {
     this.props.likeScream(this.props.scream.screamId);
-    console.log('liked')
   }
   unlikeScream = () => {
     this.props.unlikeScream(this.props.scream.screamId);
-    console.log("unliked");
   }
 
   render() {

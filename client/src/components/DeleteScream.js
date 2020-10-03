@@ -71,7 +71,7 @@ export class DeleteScream extends Component {
 DeleteScream.propTypes = {
   deleteScream: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
-  screamId: PropTypes.object.isRequired
+  screamId: PropTypes.string.isRequired
 }
 
 export default connect(null, { deleteScream })(
