@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import DeleteScream from "../components/DeleteScream";
 
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -21,7 +22,8 @@ import MyButton from '../util/MyButton';
 const styles = {
   card: {
     display: "flex",
-    marginBottom: 20
+    marginBottom: 20,
+    position: "relative"
   },
   image: {
     minWidth: 200
@@ -62,7 +64,8 @@ class Scream extends Component {
         likeCount, 
         commentCount },
       user: {
-        authenticated
+        authenticated,
+        credentials: { handle }
       } 
     } = this.props;
     const likeButton = !authenticated ? (
@@ -72,7 +75,7 @@ class Scream extends Component {
         </Link>
       </MyButton>
     ) : this.likedScream() ? (
-      <MyButton tip="Undo like" onClick={this.unlikeScream}>
+      <MyButton tip="Unlike" onClick={this.unlikeScream}>
         <Favorite color="primary" />
       </MyButton>
     ) : (
@@ -80,6 +83,9 @@ class Scream extends Component {
         <FavoriteBorder color="primary" />
       </MyButton>
     );
+    const deleteButton = authenticated && userHandle === handle ? (
+      <DeleteScream screamId={screamId} />
+    ) : null
     return (
       <Card className={classes.card}>
         <CardMedia
@@ -101,11 +107,20 @@ class Scream extends Component {
           </Typography>
           <Typography variant="body1">{body}</Typography>
           {likeButton}
-          <span>{likeCount} Likes</span>
+          <span>
+            {likeCount > 1
+              ? `${likeCount} Likes`
+              : `${likeCount} Like`}
+          </span>
           <MyButton tip="comments">
-            <ChatIcon color="primary"/>
+            <ChatIcon color="primary" />
           </MyButton>
-          <span>{commentCount}</span>
+          <span>
+            {commentCount > 1
+              ? `${commentCount} Comments`
+              : `${commentCount} Comment`}
+          </span>
+          {deleteButton}
         </CardContent>
       </Card>
     );
