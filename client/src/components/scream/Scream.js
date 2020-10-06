@@ -18,7 +18,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 
 // Redux
 import { connect } from "react-redux";
-import MyButton from '../util/MyButton';
+import MyButton from '../../util/MyButton';
 
 const styles = {
   card: {
