@@ -32,6 +32,7 @@ export const getScreams = () => dispatch => {
     })
 }
 
+// Get one scream
 export const getScream = screamId => dispatch => {
   dispatch({ type: LOADING_UI });
   axios
@@ -109,6 +110,7 @@ export const submitComment = (screamId, commentData) => dispatch => {
     })
 }
 
+// Delete a scream
 export const deleteScream = screamId => dispatch => {
   axios
     .delete(`/scream/${screamId}`)
