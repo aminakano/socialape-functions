@@ -32,30 +32,36 @@ export class Comments extends Component {
               <Grid item sm={12}>
                 <Grid container>
                   <Grid item sm={2}>
-                    <img src={userImage} alt="comment" className={classes.commentImage}/>
+                    <img
+                      src={userImage}
+                      alt="comment"
+                      className={classes.commentImage}
+                    />
                   </Grid>
                   <Grid item>
                     <div className={classes.commentData}>
                       <Typography
-                        variant="h5"
+                        variant="h6"
                         component={Link}
                         to={`/users/${userHandle}`}
-                        color="primary">
+                        color="primary"
+                      >
+                        {userHandle}
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
                         {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
                       </Typography>
-                      <hr className={classes.invisibleSeparator}/>
+                      <hr className={classes.invisibleSeparator} />
                       <Typography variant="body1">{body}</Typography>
                     </div>
                   </Grid>
                 </Grid>
               </Grid>
               {index !== comments.length - 1 && (
-                <hr className={classes.visibleSeparator}/>
+                <hr className={classes.visibleSeparator} />
               )}
             </Fragment>
-          )
+          );
         })}
       </Grid>
     )
