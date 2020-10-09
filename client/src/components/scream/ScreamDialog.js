@@ -8,7 +8,7 @@ import LikeButton from "./LikeButton";
 import Comments from "./Comments";
 import CommentForm from "./CommentForm";
 
-  
+// MUI  
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import CircularProgress from "@material-ui/core/CircularProgress";
