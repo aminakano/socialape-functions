@@ -22,7 +22,6 @@ import ChatIcon from "@material-ui/icons/Chat";
 // Redux
 import { connect } from "react-redux";
 import { getScream, clearErrors } from "../../redux/actions/dataActions";
-import user from "../../pages/user";
 
 const styles = (theme) => ({
   ...theme.formTheme,

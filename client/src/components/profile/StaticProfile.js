@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs/";
-import EditDetails from "./EditDetails";
 // MUI
 import MuiLink from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";

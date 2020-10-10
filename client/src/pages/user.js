@@ -4,6 +4,7 @@ import axios from "axios";
 import Scream from "../components/scream/Scream";
 import StaticProfile from "../components/profile/StaticProfile";
 import Grid from "@material-ui/core/Grid";
+import ScreamSkelton from "../util/ScreamSkelton";
 
 // Redux
 import { connect } from "react-redux";
@@ -35,17 +36,16 @@ class user extends Component {
     const { screamIdParam } = this.state;
 
     const screamsMarkup = loading ? (
-      <p>Loading data...</p>
+      <ScreamSkelton/>
     ) : screams === null ? (
       <p>No screams from this user</p>
     ) : !screamIdParam ? (
       screams.map((scream) => <Scream key={scream.screamId} scream={scream} />)
     ) : (
-      screams.map((scream) =>  {
-        if(scream.screamId !== screamIdParam) 
+      screams.map((scream) => {
+        if (scream.screamId !== screamIdParam)
           return <Scream key={scream.screamId} scream={scream} />;
-        else
-          return <Scream key={scream.screamId} scream={scream} openDialog/>;
+        else return <Scream key={scream.screamId} scream={scream} openDialog />;
       })
     );
 
