@@ -25,20 +25,20 @@ class Notifications extends Component {
   state = {
     anchorEl: null
   }
-  // handleOpen = event => {
-  //   this.setState({ anchorEl: event.target });
-  // }
+  handleOpen = event => {
+    this.setState({ anchorEl: event.target });
+  }
 
-  // handleClose = () => {
-  //   this.setState({ anchorEl: null })
-  // }
+  handleClose = () => {
+    this.setState({ anchorEl: null })
+  }
 
-  // onMenuOpened = () => {
-  //   let unreadNotficationsIds = this.props.notifications
-  //                               .filter(not => !not.read)
-  //                               .map(not => not.notificationId)
-  //   this.props.markNotificationsRead(unreadNotficationsIds);
-  // }
+  onMenuOpened = () => {
+    let unreadNotficationsIds = this.props.notifications
+                                .filter(not => !not.read)
+                                .map(not => not.notificationId)
+    this.props.markNotificationsRead(unreadNotficationsIds);
+  }
 
   render () {
     const notifications = this.props.notifications;
@@ -63,7 +63,7 @@ class Notifications extends Component {
         notifications.map(not => {
           const verb = not.type === "like" ? "liked" : "commented on";
           const time = dayjs(not.createdAt).fromNow();
-          const iconColor = not.red ? "primary" : "secondary";
+          const iconColor = not.read ? "primary" : "secondary";
           const icon = not.type === "like" ? (
             <Favorite color={iconColor} style={{ marginRight: 10 }}/>
           ) : (
@@ -92,22 +92,23 @@ class Notifications extends Component {
       )
     return (
       <Fragment>
-        {notificationIcon}
-        {/* <Tooltip placement="top" title="Notifications">
-          <IconButton 
-            area-owns={ anchorEl ? "simple-menu" : undefined }
+        <Tooltip placement="top" title="Notifications">
+          <IconButton
+            area-owns={anchorEl ? "simple-menu" : undefined}
             area-haspopup="true"
-            onClick={this.handleOpen}>
-              {notificationIcon}
+            onClick={this.handleOpen}
+          >
+            {notificationIcon}
           </IconButton>
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={this.handleClose}
-            onEntered={this.onMenuOpened}>
-              {notificationMarkup}
-          </Menu>
-        </Tooltip> */}
+        </Tooltip>
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={this.handleClose}
+          onEntered={this.onMenuOpened}
+        >
+          {notificationMarkup}
+        </Menu>
       </Fragment>
     );
   }
