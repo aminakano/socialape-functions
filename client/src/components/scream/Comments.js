@@ -13,18 +13,22 @@ const styles = (theme) => ({
     maxWidth: "100%",
     height: 100,
     objectFit: "cover",
-    borderRadius: "50%"
+    borderRadius: "50%",
   },
   commentData: {
-    marginLeft: 20
-  }
-})
+    marginLeft: 20,
+  },
+  container: {
+    padding: 15,
+    overflowX: "hidden"
+  },
+});
 
 export class Comments extends Component {
   render() {
     const { classes, comments } = this.props;
     return (
-      <Grid container>
+      <Grid container className={classes.container}>
         {comments.map((comment, index) => {
           const { body, createdAt, userImage, userHandle } = comment;
           return (
