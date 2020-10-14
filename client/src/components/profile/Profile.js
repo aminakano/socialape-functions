@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import EditDetails from "./EditDetails";
 import MyButton from "../../util/MyButton";
+import ProfileSkelton from "../../util/ProfileSkelton";
 
 // Redux
 import { connect } from "react-redux";
@@ -142,7 +143,7 @@ export class Profile extends Component {
         </Paper>
       )
     ) : (
-      <p>loading...</p>
+      <ProfileSkelton/>
     );
 
     return profileMarkup;
