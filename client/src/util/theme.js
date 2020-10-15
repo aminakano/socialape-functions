@@ -31,7 +31,7 @@ export default {
       margin: "10px auto",
     },
     button: {
-      marginTop: 20,
+      margin: "20px 0",
       position: "relative",
     },
     customError: {
