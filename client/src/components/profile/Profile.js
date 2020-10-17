@@ -108,10 +108,7 @@ export class Profile extends Component {
               <CalendarToday color="primary" />{" "}
               <span>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
             </div>
-            <MyButton
-              tip="Log out"
-              onClick={this.handleLogout}
-            >
+            <MyButton tip="Log out" onClick={this.handleLogout}>
               <KeyboardReturn color="primary" />
             </MyButton>
             <EditDetails />
@@ -119,8 +116,8 @@ export class Profile extends Component {
         </Paper>
       ) : (
         <Paper className={classes.paper}>
-          <Typography variant="body2" align="center">
-            No profile found, please log in again
+          <Typography variant="h5" align="center">
+            See what’s happening in the world right now
           </Typography>
           <div className={classes.buttons}>
             <Button
@@ -143,7 +140,7 @@ export class Profile extends Component {
         </Paper>
       )
     ) : (
-      <ProfileSkelton/>
+      <ProfileSkelton />
     );
 
     return profileMarkup;
