@@ -29,6 +29,11 @@ const styles = {
   image: {
     minWidth: 200
   },
+  imageSm: {
+    width: 100,
+    height: 100,
+    borderRadius: "50%"
+  },
   content: {
     padding: 25,
     objectFit: "cover"
@@ -62,7 +67,9 @@ class Scream extends Component {
         <CardMedia
           image={userImage}
           title="Profile image"
-          className={classes.image}
+          className={
+            (classes.image, window.innerWidth < 600 ? classes.imageSm : null)
+          }
         />
         <CardContent className={classes.content}>
           <Typography
@@ -77,11 +84,9 @@ class Scream extends Component {
             {dayjs(createdAt).fromNow()}
           </Typography>
           <Typography variant="body1">{body}</Typography>
-          <LikeButton screamId={screamId}/>
+          <LikeButton screamId={screamId} />
           <span>
-            {likeCount > 1
-              ? `${likeCount} Likes`
-              : `${likeCount} Like`}
+            {likeCount > 1 ? `${likeCount} Likes` : `${likeCount} Like`}
           </span>
           <MyButton tip="comments">
             <ChatIcon color="primary" />
@@ -92,7 +97,11 @@ class Scream extends Component {
               : `${commentCount} Comment`}
           </span>
           {deleteButton}
-          <ScreamDialog screamId={screamId} userHandle={userHandle} openDialog={this.props.openDialog}/>
+          <ScreamDialog
+            screamId={screamId}
+            userHandle={userHandle}
+            openDialog={this.props.openDialog}
+          />
         </CardContent>
       </Card>
     );
