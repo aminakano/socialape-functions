@@ -63,7 +63,11 @@ class Scream extends Component {
       <DeleteScream screamId={screamId} />
     ) : null
     return (
-      <Card className={classes.card}>
+      <Card
+        className={
+          (classes.card, window.innerWidth < 600 ? classes.small : null)
+        }
+      >
         <CardMedia
           image={userImage}
           title="Profile image"
