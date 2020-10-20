@@ -24,22 +24,25 @@ const styles = {
   card: {
     display: "flex",
     marginBottom: 20,
-    position: "relative"
+    position: "relative",
+    "& .small": {
+      padding: 10,
+    },
   },
   image: {
-    minWidth: 200
+    minWidth: 200,
   },
   imageSm: {
     width: 100,
     height: 100,
-    borderRadius: "50%"
+    borderRadius: "50%",
+    alignSelf: "center",
   },
   content: {
     padding: 25,
-    objectFit: "cover"
-  }
-  
-}
+    objectFit: "cover",
+  },
+};
 class Scream extends Component {
   render() {
     dayjs.extend(relativeTime);
@@ -65,7 +68,7 @@ class Scream extends Component {
     return (
       <Card
         className={
-          (classes.card, window.innerWidth < 600 ? classes.small : null)
+          (classes.card)
         }
       >
         <CardMedia
@@ -88,7 +91,7 @@ class Scream extends Component {
             {dayjs(createdAt).fromNow()}
           </Typography>
           <Typography variant="body1">{body}</Typography>
-          <LikeButton screamId={screamId} />
+          <LikeButton screamId={screamId}/>
           <span>
             {likeCount > 1 ? `${likeCount} Likes` : `${likeCount} Like`}
           </span>
